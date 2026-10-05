@@ -1,0 +1,59 @@
+MPT-ASD ROS 2 PROJECT CHECKPOINT
+================================
+
+System:
+- Ubuntu 22.04
+- ROS 2 Jazzy
+- Gazebo Harmonic
+
+Workspace:
+~/mptasd_ws
+
+Package:
+mptasd_description
+
+Current structure:
+~/mptasd_ws/src/mptasd_description/
+├── CMakeLists.txt
+├── package.xml
+├── launch/
+│   └── display.launch.py
+├── urdf/
+│   └── mptasd_rover.xacro
+├── meshes/
+└── rviz/
+
+CURRENT STATUS:
+1. mptasd_description builds successfully.
+2. Package is visible:
+   ros2 pkg list | grep mptasd
+3. display.launch.py is installed and ROS can find it.
+4. CMakeLists.txt install() section is working.
+5. mptasd_rover.xacro exists.
+6. Xacro needs to be tested/fixed in the launch file.
+7. RViz visualization has NOT been completed yet.
+
+LAST ERROR:
+xacro/home/harshada/.../mptasd_rover.xacro
+
+NEXT STEPS:
+1. Check:
+   cat ~/mptasd_ws/src/mptasd_description/launch/display.launch.py
+
+2. Check:
+   ls -l ~/mptasd_ws/src/mptasd_description/urdf/mptasd_rover.xacro
+
+3. Test:
+   xacro ~/mptasd_ws/src/mptasd_description/urdf/mptasd_rover.xacro > /tmp/mptasd.urdf
+
+4. Fix display.launch.py if required.
+
+5. Launch:
+   ros2 launch mptasd_description display.launch.py
+
+6. Get the complete rocker-bogie rover visible in RViz.
+
+IMPORTANT:
+Do NOT recreate the workspace or package.
+Do NOT modify CMakeLists.txt unless necessary.
+Continue from this checkpoint.

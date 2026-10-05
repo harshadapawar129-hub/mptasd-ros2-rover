@@ -1,0 +1,649 @@
+    1  ros2 run demo_nodes_cpp talker
+    2  ros2 run demo_nodes_cpp talker
+    3  ign gazebo shapes.sdf
+    4  ign gazebo shapes.sdf -v 4
+    5  locale  # check for UTF-8
+    6  sudo apt update && sudo apt install locales
+    7  sudo locale-gen en_US en_US.UTF-8
+    8  sudo update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
+    9  export LANG=en_US.UTF-8
+   10  locale  # verify settings
+   11  sudo apt install software-properties-common
+   12  sudo add-apt-repository universe
+   13  sudo apt install software-properties-common
+   14  sudo add-apt-repository universe
+   15  sudo apt update && sudo apt install curl -y
+   16  sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o /usr/share/keyrings/ros-archive-keyring.gpg
+   17  echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(. /etc/os-release && echo $UBUNTU_CODENAME) main" | sudo tee /etc/apt/sources.list.d/ros2.list > /dev/null
+   18  sudo apt update
+   19  sudo apt upgrade
+   20  sudo apt install ros-humble-desktop
+   21  source /opt/ros/humble/setup.bash
+   22  echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc
+   23  source ~/.bashrc
+   24  sudo apt-get update
+   25  sudo apt-get install lsb-release gnupg
+   26  sudo curl https://packages.osrfoundation.org/gazebo.gpg --output /usr/share/keyrings/pkgs-osrf-archive-keyring.gpg
+   27  echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/pkgs-osrf-archive-keyring.gpg] http://packages.osrfoundation.org/gazebo/ubuntu-stable $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/gazebo-stable.list > /dev/null
+   28  sudo apt-get update
+   29  sudo apt-get install ignition-fortress
+   30  sudo apt-get install ros-humble-ros-gz
+   31  sudo apt-get install ros-humble-ros-gz-bridge
+   32  sudo apt-get install ros-humble-ign-ros2-control
+   33  pip3 install -U eyantra-autoeval
+   34  sudo apt install python3-pip
+   35  pip3 install -U eyantra-autoeval
+   36  sudo apt install -U eyantra-autoeval
+   37  clear
+   38  cd ~/colcon_ws
+   39  git clone https://github.com/eYantra-Robotics-Competition/eyrc-25-26-krishi-cobot.git ./src/
+   40  git checkout tags/v1.0.1 .
+   41  clear
+   42  sudo apt install python3-colcon-common-extensions
+   43  mkdir -p ~/ros2_ws/src
+   44  cd ~/ros2_ws
+   45  .
+   46  └── src
+   47  1 directory, 0 files
+   48  .
+   49  └── src
+   50  4 directories, 3 files
+   51  .
+   52  └── src
+   53  1 directory, 0 files
+   54  cd ~/colcon_ws
+   55  git clone https://github.com/eYantra-Robotics-Competition/eyrc-25-26-krishi-cobot.git ./src/
+   56  git checkout tags/v1.0.1 .
+   57  sudo apt install git
+   58  cd ~/colcon_ws
+   59  git clone https://github.com/eYantra-Robotics-Competition/eyrc-25-26-krishi-cobot.git ./src/
+   60  git checkout tags/v1.0.1 .
+   61  cd ~/colcon_ws
+   62  colcon build
+   63  source install/setup.bash
+   64  echo "source ~/colcon_ws/install/setup.bash" >> ~/.bashrc
+   65  source ~/.bashrc      # source bashrc as we have made changes
+   66  ros2 launch eyantra_warehouse task0.launch.py
+   67  echo "source ~/colcon_ws/install/setup.bash" >> ~/.bashrc
+   68  source ~/.bashrc      # source bashrc as we have made changes
+   69  ros2 launch eyantra_warehouse task0.launch.py
+   70  cd ~/colcon_ws
+   71  git clone https://github.com/eYantra-Robotics-Competition/eyrc-25-26-krishi-cobot.git ./src/
+   72  git checkout tags/v1.0.1 .
+   73  clear
+   74  [200~git clone https://github.com/ros2/examples src/examples -b humble
+   75  ~clear
+   76  clear
+   77  cd ~/colcon_ws
+   78  git clone https://github.com/eYantra-Robotics-Competition/eyrc-25-26-krishi-cobot.git ./src/
+   79  git checkout tags/v1.0.1 .
+   80  sudo apt install git
+   81  cd ~/colcon_ws
+   82  git clone https://github.com/eYantra-Robotics-Competition/eyrc-25-26-krishi-cobot.git ./src/
+   83  git checkout tags/v1.0.1 .
+   84  colcon build
+   85  clear
+   86  #include "opencv2/imgproc.hpp"
+   87  #include "opencv2/imgcodecs.hpp"
+   88  #include "opencv2/highgui.hpp"
+   89  using namespace cv;
+   90  // Declare the variables
+   91  Mat src, dst;
+   92  int top, bottom, left, right;
+   93  int borderType = BORDER_CONSTANT;
+   94  const char* window_name = "copyMakeBorder Demo";
+   95  RNG rng(12345);
+   96  int main( int argc, char** argv )
+   97  {     const char* imageName = argc >=2 ? argv[1] : "lena.jpg";       // Loads an image;     src = imread( samples::findFile( imageName ), IMREAD_COLOR ); // Load an image
+   98  }
+   99  sudo apt install python3-colcon-common-extensions
+  100  mkdir -p ~/ros2_ws/src
+  101  cd ~/ros2_ws
+  102  .
+  103  └── src
+  104  1 directory, 0 files
+  105  colcon build 
+  106  cd ~/colcon_ws
+  107  colcon build
+  108  source install/setup.bash
+  109  echo "source ~/colcon_ws/install/setup.bash" >> ~/.bashrc
+  110  source ~/.bashrc      # source bashrc as we have made changes
+  111  ros2 launch eyantra_warehouse task0.launch.py
+  112  clear
+  113  # Install minimal prerequisites (Ubuntu 18.04 as reference)
+  114  sudo apt update && sudo apt install -y cmake g++ wget unzip
+  115  # Download and unpack sources
+  116  wget -O opencv.zip https://github.com/opencv/opencv/archive/4.x.zip
+  117  unzip opencv.zip
+  118  # Create build directory
+  119  mkdir -p build && cd build
+  120  # Configure
+  121  cmake  ../opencv-4.x
+  122  # Build
+  123  cmake --build .
+  124  clear
+  125  cd downloads
+  126  wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+  127  sudo dpkg -i google-chrome-stable_current_amd64.deb
+  128  [200~sudo apt --fix-broken install. 
+  129  ~sudo apt --fix-broken install. 
+  130  gazebo
+  131  sudo apt --fix-broken install. 
+  132  sudo apt install gazebo
+  133  gazebo worlds/pioneer2dx.world
+  134  cd ~/panda_ws/src
+  135  git clone https://github.com/MechaMind-Labs/Franka_Panda_Color_Sorting_Robot.git
+  136  cd ~/panda_ws
+  137  sudo apt install python3-rosdep -y
+  138  sudo rosdep init
+  139  rosdep update
+  140  rosdep install --from-paths src --ignore-src -r -y
+  141  colcon build
+  142  source install/setup.bash
+  143  clear
+  144  mkdir panda_ws 
+  145  cd panda_ws/
+  146  mkdir src
+  147  ls
+  148  cd src/
+  149  ls
+  150  ros2 pkg create panda_description --build-type ament_cmake
+  151  clear
+  152  colcon build
+  153  ls
+  154  cd panda_description/
+  155  ls
+  156  mkdir launch rviz urdf meshes
+  157  ls
+  158  cd ..
+  159  code .
+  160  cd ..
+  161  colcon build
+  162  install/setup.bash
+  163  clear
+  164  source ~/panda_ws/install/setup.bash
+  165  clear
+  166  gedit ~/panda_ws/src/panda_description/CMakeLists.txt
+  167  install(
+  168  )
+  169  mkdir panda_ws
+  170  cd
+  171  cd panda_ws/
+  172  ls
+  173  cd src/
+  174  ls
+  175  cd panda_description/
+  176  ls
+  177  cd ..
+  178  code .
+  179  colcon build
+  180  ~/panda_ws
+  181  rm -rf Franka_Panda_Color_Sorting_Robot/panda_description
+  182  ~/panda_ws
+  183  colcon build
+  184  . install/setup.bash
+  185  ros2 launch panda_description display.launch.py
+  186  ros2 launch panda_description display display.launch.py
+  187  ros2 launch panda_description /home/harshada/panda_ws/src/panda_description/launch/display.launch.py
+  188  ros2 launch panda_description display.launch.py
+  189  ros2 launch panda_harshada display.launch.py
+  190  ros2 launch panda_description display.launch.py
+  191  clear
+  192  colcon build
+  193  clear
+  194  colcon build
+  195  . install/setup.bash
+  196  ros2 launch panda_description display.launch.py
+  197  .ros2 launch panda_description display.gazebo.py
+  198  ros2 launch panda_description gazebo.display.py
+  199  >mkdir -p ~/panda_ws/src
+  200  cd ~/panda_ws
+  201  colcon build
+  202  source install/setup.bash
+  203  cd src
+  204  ros2 pkg create --build-type ament_cmake panda_description
+  205  ros2 launch panda_description display.launch.py
+  206  source /opt/ros/humble/setup.bash
+  207  cd ~/panda_ws/
+  208  rm -rf build install log colcon build
+  209  source install/setup.bash
+  210  colcon build
+  211  . install/setup.bash
+  212  ros2 launch panda_description display.launch.py
+  213  clear
+  214  cd rover_arm_ws/src/
+  215  ros2 pkg create --build-type ament_cmake --node-name my_node my_first_pkg
+  216  cd my_first_pkg/
+  217  code .
+  218  cd
+  219  cd rover_arm_ws/src/my_first_pkg
+  220  cd urdf/
+  221  ros2 launch urdf_tutorial display.launch.py model:=my_robot.urdf
+  222  [200~sudo apt install ros-$ROS_DISTRO-robot-state-publisher ros-$ROS_DISTRO-joint-state-publisher-gui ros-$ROS_DISTRO-rviz2
+  223  ~sudo apt install ros-$ROS_DISTRO-robot-state-publisher ros-$ROS_DISTRO-joint-state-publisher-gui ros-$ROS_DISTRO-rviz2
+  224  source /opt/ros/$ROS_DISTRO/setup.bash
+  225  mkdir -p ~/ws_urdf/src
+  226  cd ~/ws_urdf/src
+  227  ros2 pkg create --build-type ament_cmake my_robot_description
+  228  cd my_robot_description
+  229  mkdir urdf meshes launch
+  230  <exec_depend>robot_state_publisher</exec_depend>
+  231  <exec_depend>joint_state_publisher</exec_depend>
+  232  <exec_depend>rviz2</exec_depend>
+  233  clear
+  234  cd
+  235  source /opt/ros/$ROS_DISTRO/setup.bash
+  236  mkdir -p ~/ws_urdf/src
+  237  cd ~/ws_urdf/src
+  238  ros2 pkg create --build-type ament_cmake my_robot_description
+  239  cd my_robot_description
+  240  mkdir urdf meshes launch
+  241  install(
+  242  )
+  243  cd ~/ws_urdf
+  244  colcon build
+  245  source install/setup.bash
+  246  my_robot_description/
+  247  │
+  248  ├── package.xml
+  249  ├── CMakeLists.txt
+  250  ├── urdf/
+  251  │   └── my_robot.urdf
+  252  ├── meshes/
+  253  │   └── part1.stl
+  254  ├── launch/
+  255  gedit .bashrc
+  256  cd panda_ws/
+  257  colcon build
+  258  colcon ws
+  259  colcon build
+  260  ls
+  261  cd src/
+  262  ls
+  263  cd panda_description/
+  264  ls
+  265  cd ../
+  266  ../
+  267  cd ../
+  268  colcon build
+  269  source install/setup.bash 
+  270  ros2 launch panda_description gazebo.launch.py 
+  271  clear
+  272  colcon build
+  273  ros2 launch panda_description gazebo.launch.py 
+  274  cd ~/panda_ws/src
+  275  mkdir panda_ws
+  276  cd panda_ws
+  277  mkdir src
+  278  ls
+  279  cd src/
+  280  git clone https://github.com/MechaMind-Labs/Franka_Panda_Color_Sorting_Robot.git
+  281  cd ../
+  282  sudo apt install python3-rosdep -y
+  283  sudo rosdep init
+  284  rosdep update
+  285  rosdep install --from-paths src --ignore-src -r -y
+  286  ros2 launch panda_bringup pick_and_place.launch.py
+  287  colcon build
+  288  ros2 launch panda_bringup pick_and_place.launch.py
+  289  sudo apt update
+  290  sudo apt install ros-humble-joint-trajectory-controller
+  291  colcon build
+  292  mkdir panda_ws
+  293  cd
+  294  cd panda_ws
+  295  mkdir src
+  296  ls
+  297  cd src/
+  298  ros2 pkg create panda_decription --build-type ament_cmake
+  299  l
+  300  cd panda_description/
+  301  cd panda_decription/
+  302  ls
+  303  mkdir launch rviz urdf meshes
+  304  ls
+  305  cd ..
+  306  code .
+  307  sudo apt install ros-noetic-moveit
+  308  clear
+  309  rosversion -d
+  310  sudo apt install python3-rospkg
+  311  rosversion -d
+  312  sudo apt update
+  313  sudo apt install ros-humble-moveit ros-humble-moveit-setup-assistant
+  314  ros2 launch moveit_setup_assistant setup_assistant.launch.py
+  315  cd ~/arm_ws/src
+  316  find . -name "*.urdf"
+  317  check_urdf arm.urdf
+  318  ros2 launch moveit_setup_assistant setup_assistant.launch.py
+  319  mkdir panda_ws
+  320  c panda_ws/
+  321  cd panda_ws/
+  322  ls
+  323  mkdir src
+  324  ls
+  325  cd ..
+  326  cd panda_description/
+  327  cd panda_ws/
+  328  mkdir panda_ws/
+  329  cd panda_ws/
+  330  mkdir src
+  331  ls
+  332  cd src/
+  333  ros2 pkg create panda_description --build-type ament_cmake
+  334  cd panda_description/
+  335  ls
+  336  mkdir launch rviz urdf meshes
+  337  ls
+  338  cd ..
+  339  code .
+  340  cd
+  341  cd ..
+  342  colcon build
+  343  . install/setup.bash
+  344  cd ~/panda_description
+  345  cd ~/arm_ws
+  346  sudo chown -R $USER:$USER .
+  347  rm -rf build/ install/ log/
+  348  colcon build
+  349  . install/setup.bash
+  350  cd
+  351  cd ..
+  352  cd panda_description/
+  353  colcon build
+  354  cd panda_ws/
+  355  ls
+  356  cd panda_description
+  357  cd panda_description/
+  358  cd panda_ws/
+  359  ls
+  360  cd src/
+  361  cd panda_description/
+  362  ls
+  363  code .
+  364  colcon build
+  365  install/setup.bash
+  366  . install/setup.bash
+  367  ros2 launch panda_description display.launch.py
+  368  cd
+  369  cd panda_ws/
+  370  ls
+  371  cd src/
+  372  ls
+  373  cd panda_description/
+  374  cd
+  375  ls
+  376  clear
+  377  mkdir panda_ws/
+  378  clear
+  379  mkdir panda_ws
+  380  cd panda_ws/
+  381  cd src/
+  382  mkdir src
+  383  ls
+  384  cd src/
+  385  ros2 pkg create panda_description --build-type ament_cmake
+  386  ls
+  387  cd panda_descriptionn/
+  388  cd panda_description/
+  389  ls
+  390  mkdir launch rviz urdf meshes
+  391  ls
+  392  /usr/bin/python3 "/home/harshada/#color detection and shape detection.py"
+  393  clear
+  394  code  .
+  395  pip install opencv-python numpy
+  396  sudo apt install python3-pip
+  397  pip install opencv-python numpy
+  398  code  .
+  399  /usr/bin/python3 "/home/harshada/pixel value .py"
+  400  clear
+  401  code .
+  402  clear
+  403  [200~sudo apt update
+  404  sudo apt upgrade -y
+  405  [200~lsb_release -a~
+  406  lsb_release -a
+  407  sudo apt install update-manager-core
+  408  cat /etc/update-manager/release-upgrades
+  409  sudo do-release-upgrade
+  410  sudo do-release-upgrade -d
+  411  sudo reboot
+  412  clear
+  413  lsb_release -a
+  414  sudo apt update
+  415  sudo apt full-upgrade -y
+  416  sudo reboot
+  417  sudo do-release-upgrade -d
+  418  clear
+  419  sudo apt update
+  420  sudo apt upgrade -y
+  421  sudo apt full-upgrade -y
+  422  sudo apt autoremove -y
+  423  sudo reboot
+  424  clear
+  425  lsb_release -a
+  426  sudo apt install update-manager-core
+  427  cat /etc/update-manager/release-upgrades
+  428  sudo do-release-upgrade
+  429  mkdir -p ~/ros2_ws/src
+  430  cd ~/ros2_ws
+  431  colcon build
+  432  source install/setup.bash
+  433  grep "source" ~/.bashrc
+  434  env | grep ROS
+  435  env | grep AMENT
+  436  echo $ROS_DISTRO
+  437  cd ~/ros2_ws
+  438  rm -rf build install log
+  439  find . -name CMakeCache.txt -delete
+  440  find . -name CMakeFiles -type d -exec rm -rf {} +
+  441  source /opt/ros/jazzy/setup.bash
+  442  echo $ROS_DISTRO
+  443  colcon build --symlink-install
+  444  sudo apt update
+  445  sudo apt install ros-jazzy-xacro
+  446  ros2 pkg list | grep xacro
+  447  rosdep install --from-paths src --ignore-src -r -y
+  448  colcon build --symlink-install
+  449  ros2 pkg list
+  450  ros2 pkg list | grep ur_description
+  451  ros2 launch ebot_description display.launch.py
+  452  ros2 node list
+  453  rviz2
+  454  nvidia-smi
+  455  lspci | grep -i nvidia
+  456  ubuntu-drivers devices
+  457  sudo apt update
+  458  sudo apt install nvidia-driver-580
+  459  sudo reboot
+  460  nvidia-smi
+  461  ubuntu-drivers devices
+  462  sudo apt update
+  463  sudo apt install -y docker.io docker-compose-v2
+  464  sudo systemctl enable docker
+  465  sudo systemctl start docker
+  466  sudo usermod -aG docker $USER
+  467  docker --version
+  468  docker run hello-world
+  469  curl -fsSL https://nvidia.github.io/libnvidia-container/gpgkey | sudo gpg --dearmor -o /usr/share/keyrings/nvidia-container-toolkit-keyring.gpg
+  470  curl -s -L https://nvidia.github.io/libnvidia-container/stable/deb/nvidia-container-toolkit.list | sed 's#deb https://#deb [signed-by=/usr/share/keyrings/nvidia-container-toolkit-keyring.gpg] https://#g' | sudo tee /etc/apt/sources.list.d/nvidia-container-toolkit.list
+  471  sudo apt update
+  472  sudo apt install -y nvidia-container-toolkit
+  473  sudo apt autoremove
+  474  echo $ROS_DISTRO
+  475  sudo nvidia-ctk runtime configure --runtime=docker
+  476  sudo systemctl restart docker
+  477  docker run --rm --gpus all ubuntu nvidia-smi
+  478  sudo docker run --rm --gpus all ubuntu nvidia-smi
+  479  sudo nvidia-ctk runtime configure --runtime=docker
+  480  sudo systemctl restart docker
+  481  docker run --rm --gpus all ubuntu nvidia-smi
+  482  docker pull nvcr.io/nvidia/isaac-sim:5.1.0
+  483  ros2 launch rlai_bringup simulation.launch.py
+  484  ls scripts
+  485  chmod +x scripts/install_deps.sh
+  486  ./scripts/install_deps.sh
+  487  apt-cache search ros-jazzy | grep topic
+  488  cd ~/rbot_ws
+  489  sudo rosdep init
+  490  rosdep update
+  491  rosdep install --from-paths src --ignore-src -r -y
+  492  colcon build --symlink-install
+  493  apt search ros-jazzy-topic-based
+  494  cd ~/rbot_ws
+  495  rosdep install --from-paths src --ignore-src -r -y
+  496  source install/setup.bash
+  497  echo "source ~/rbot_ws/install/setup.bash" >> ~/.bashrc
+  498  source ~/.bashrc
+  499  ros2 pkg list | grep rlai
+  500  find ~/rbot_ws/src/rbot -name "*.launch.py"
+  501  ros2 launch rlai_bringup simulation.launch.py
+  502  ros2 run node list
+  503  ros2 run turtlesim turtle_teleop_key
+  504  1. source /opt/ros/jazzy/setup.bash
+  505  2. source ~/ros2_ws/install/setup.bash
+  506  3. ros2 launch <your_package> simulation.launch.py
+  507  4. rviz2
+  508  5. ros2 launch slam_toolbox online_async_launch.py
+  509  6. ros2 run teleop_twist_keyboard teleop_twist_keyboard
+  510  7. ros2 run nav2_map_server map_saver_cli -f warehouse_map
+  511  8. ros2 launch nav2_bringup navigation_launch.py map:=warehouse_map.yaml
+  512  clear
+  513  ros2 run turtlesim  turtlesim_node
+  514  ros2 run turtlesim turtlesim_node
+  515  clear
+  516  ros2 run turtlesim turtlesim_node
+  517  pwd
+  518  ls
+  519  code .
+  520  cd
+  521  pwd
+  522  ls
+  523  clear
+  524  mkdir -p ~/amr_ws/src
+  525  cd ~/amr_ws/src
+  526  ros2 pkg create amr_description --build-type ament_cmake
+  527  amr_description/
+  528  ├── CMakeLists.txt
+  529  ├── package.xml
+  530  ├── urdf/
+  531  ├── meshes/
+  532  ├── rviz/
+  533  ├── launch/
+  534  └── config/
+  535  ros2 pkg create amr_description --build-type ament_cmake
+  536  cd amr_description
+  537  mkdir urdf meshes launch rviz config
+  538  clear
+  539  rm
+  540  gazebo launch
+  541  gz sim
+  542  source /opt/ros/jazzy/setup.bash
+  543  ros2 --version
+  544  ros2 doctor
+  545  mkdir -p ~/turtlebot4_ws/src
+  546  cd ~/turtlebot4_ws
+  547  colcon build
+  548  source install/setup.bash
+  549  ros2 pkg list | grep turtlebot4
+  550  clear
+  551  sudo apt update
+  552  apt search ros-jazzy-turtlebot4
+  553  sudo apt install ros-jazzy-turtlebot4-*
+  554  ros2 pkg list | grep turtlebot4
+  555  gz sim shapes.sdf
+  556  ros2 launch turtlebot4_ignition_bringup ignition.launch.py
+  557  ros2 launch turtlebot4_gz_bringup turtlebot4_world.launch.py
+  558  ros2 launch turtlebot4_simulator simulator.launch.py
+  559  clear
+  560  ros2 pkg list | grep turtlebot4
+  561  source /opt/ros/jazzy/setup.bash
+  562  source ~/turtlebot4_ws/install/setup.bash
+  563  ros2 pkg executables turtlebot4_ignition_bringup
+  564  ros2 pkg executables turtlebot4_gz_bringup
+  565  gz sim
+  566  rviz2
+  567  cd ..
+  568  cd --
+  569  cd mechabot_ws/src/
+  570  rviz2
+  571  cd mechabot_ws/src
+  572  ls
+  573  cd mechabot_description/
+  574  ls
+  575  code ..
+  576  cd urdf/
+  577  ls
+  578  ros2 run robot_state_publisher robot_state_publisher bot.urdf
+  579  cat bot.urdf
+  580  ros2 run robot_state_publisher robot_state_publisher bot.urdf
+  581  cd mechabot_ws/src/mechabot_description/urdf
+  582  cd ..
+  583  cd mechabot_ws/src/mechabot_description/urdf
+  584  code ..
+  585  ros2 run robot_state_publisher robot_state_publisher bot.urdf
+  586  rviz2
+  587  mechabot_ws/src
+  588  cd mechabot_ws/src
+  589  mechabot_description/
+  590  cd mechabot_description
+  591  cd urdf
+  592  ls
+  593  ros2 run robot_state_publisher robot_sate_publisher bot.urdf
+  594  echo $ROS_DISTRO && ros2 pkg executables robot_state_publisher
+  595  cd ~/mechabot_ws/src/mechabot_description/urdf
+  596  ros2 run robot_state_publisher robot_state_publisher bot.urdf
+  597  <?xml version="1.0" ?>
+  598  <robot name="bot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+  599  ros2 run robot_state_publisher robot_state_publisher bot.urdf
+  600  <?xml version="1.0"?>
+  601  <robot name="bot">
+  602  ros2 run robot_state_publisher robot_state_publisher bot.urdf
+  603  ros2 run robot_state_publisher robot_state_publisher bot.urdf~
+  604  ros2 run robot_state_publisher robot_state_publisher bot.urdf
+  605  gazebo
+  606  gazebo -u
+  607  killall gzserver
+  608  cd hamr_descripyion
+  609  cd ~
+  610  ls
+  611  cd ~/hamr_ws
+  612  ls
+  613  source /opt/ros/jazzy/setup.bash
+  614  ros2 --version
+  615  echo $ROS_DISTRO
+  616  cd ~/hamr_ws/src
+  617  ls
+  618  cd ~/hamr_ws
+  619  colcon list
+  620  cd ~/hamr_ws
+  621  source install/setup.bash
+  622  ros2 pkg list | grep hamr
+  623  cd ~/hamr_description/src
+  624  ls
+  625  cd ~/hamr_description
+  626  ls
+  627  cd ~/src
+  628  clear
+  629  nano ~/mptasd_ws/src/mptasd_description/CMakeLists.txt
+  630  ls ~/mptasd_ws/src/mptasd_description/launch
+  631  cd ~/mptasd_ws
+  632  rm -rf build install log
+  633  colcon build --symlink-install
+  634  source install/setup.bash
+  635  ls $(ros2 pkg prefix mptasd_description)/share/mptasd_description/launch
+  636  ros2 launch mptasd_description display.launch.py
+  637  nano ~/mptasd_ws/src/mptasd_description/launch/display.launch.py
+  638  cd ~/mptasd_ws
+  639  source /opt/ros/jazzy/setup.bash
+  640  source install/setup.bash
+  641  ros2 run xacro xacro src/mptasd_description/urdf/mptasd_rover.xacro > /tmp/mptasd.urdf
+  642  colcon build --symlink-install
+  643  source install/setup.bash
+  644  ros2 launch mptasd_description display.launch.py
+  645  clear
+  646  ros2 run xacro xacro src/mptasd_description/urdf/mptasd_rover.xacro > /tmp/mptasd.urdf
+  647  file not found: 'xacro/home/harshada/.../mptasd_rover.xacro'
+  648  nano ~/mptasd_ws/src/mptasd_description/launch/display.launch.py
+  649  history > ~/mptasd_ws/mptasd_terminal_history.txt

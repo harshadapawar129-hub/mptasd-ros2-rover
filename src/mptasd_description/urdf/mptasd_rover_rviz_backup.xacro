@@ -1,0 +1,310 @@
+<?xml version="1.0"?>
+
+<robot name="mptasd_rover"
+       xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <!-- ================================================= -->
+  <!-- PARAMETERS -->
+  <!-- ================================================= -->
+
+  <!-- Rover dimensions -->
+  <xacro:property name="body_length" value="0.555"/>
+  <xacro:property name="body_width"  value="0.435"/>
+  <xacro:property name="body_height" value="0.10"/>
+
+  <!-- Wheel -->
+  <xacro:property name="wheel_radius" value="0.05"/>
+  <xacro:property name="wheel_width"  value="0.04"/>
+
+  <!-- Wheel positions -->
+  <xacro:property name="wheel_x" value="0.20"/>
+  <xacro:property name="wheel_y" value="0.235"/>
+
+  <!-- ================================================= -->
+  <!-- MATERIALS -->
+  <!-- ================================================= -->
+
+  <material name="body_material">
+    <color rgba="0.25 0.25 0.25 1.0"/>
+  </material>
+
+  <material name="wheel_material">
+    <color rgba="0.05 0.05 0.05 1.0"/>
+  </material>
+
+  <material name="suspension_material">
+    <color rgba="0.6 0.6 0.6 1.0"/>
+  </material>
+
+
+  <!-- ================================================= -->
+  <!-- BASE FOOTPRINT -->
+  <!-- ================================================= -->
+
+  <link name="base_footprint"/>
+
+  <joint name="base_footprint_joint" type="fixed">
+    <parent link="base_footprint"/>
+    <child link="base_link"/>
+    <origin xyz="0 0 0.10" rpy="0 0 0"/>
+  </joint>
+
+
+  <!-- ================================================= -->
+  <!-- MAIN BODY -->
+  <!-- ================================================= -->
+
+  <link name="base_link">
+
+    <visual>
+      <origin xyz="0 0 0.10"/>
+      <geometry>
+        <box size="${body_length} ${body_width} ${body_height}"/>
+      </geometry>
+      <material name="body_material"/>
+    </visual>
+
+    <collision>
+      <origin xyz="0 0 0.10"/>
+      <geometry>
+        <box size="${body_length} ${body_width} ${body_height}"/>
+      </geometry>
+    </collision>
+
+  </link>
+
+
+  <!-- ================================================= -->
+  <!-- LEFT ROCKER -->
+  <!-- ================================================= -->
+
+  <link name="rocker_left">
+
+    <visual>
+      <origin xyz="0 0 0"/>
+      <geometry>
+        <box size="0.42 0.05 0.05"/>
+      </geometry>
+      <material name="suspension_material"/>
+    </visual>
+
+  </link>
+
+  <joint name="rocker_left_joint" type="revolute">
+
+    <parent link="base_link"/>
+    <child link="rocker_left"/>
+
+    <origin xyz="0 0.235 0.10"/>
+
+    <axis xyz="1 0 0"/>
+
+    <limit
+      lower="-0.7"
+      upper="0.7"
+      effort="50"
+      velocity="1.0"/>
+
+  </joint>
+
+
+  <!-- ================================================= -->
+  <!-- RIGHT ROCKER -->
+  <!-- ================================================= -->
+
+  <link name="rocker_right">
+
+    <visual>
+      <origin xyz="0 0 0"/>
+      <geometry>
+        <box size="0.42 0.05 0.05"/>
+      </geometry>
+      <material name="suspension_material"/>
+    </visual>
+
+  </link>
+
+  <joint name="rocker_right_joint" type="revolute">
+
+    <parent link="base_link"/>
+    <child link="rocker_right"/>
+
+    <origin xyz="0 -0.235 0.10"/>
+
+    <axis xyz="1 0 0"/>
+
+    <limit
+      lower="-0.7"
+      upper="0.7"
+      effort="50"
+      velocity="1.0"/>
+
+  </joint>
+
+
+  <!-- ================================================= -->
+  <!-- LEFT BOGIE -->
+  <!-- ================================================= -->
+
+  <link name="bogie_left">
+
+    <visual>
+      <origin xyz="0 0 0"/>
+      <geometry>
+        <box size="0.30 0.05 0.05"/>
+      </geometry>
+      <material name="suspension_material"/>
+    </visual>
+
+  </link>
+
+  <joint name="bogie_left_joint" type="revolute">
+
+    <parent link="rocker_left"/>
+    <child link="bogie_left"/>
+
+    <origin xyz="-0.08 0 0"/>
+
+    <axis xyz="1 0 0"/>
+
+    <limit
+      lower="-0.8"
+      upper="0.8"
+      effort="50"
+      velocity="1.0"/>
+
+  </joint>
+
+
+  <!-- ================================================= -->
+  <!-- RIGHT BOGIE -->
+  <!-- ================================================= -->
+
+  <link name="bogie_right">
+
+    <visual>
+      <origin xyz="0 0 0"/>
+      <geometry>
+        <box size="0.30 0.05 0.05"/>
+      </geometry>
+      <material name="suspension_material"/>
+    </visual>
+
+  </link>
+
+  <joint name="bogie_right_joint" type="revolute">
+
+    <parent link="rocker_right"/>
+    <child link="bogie_right"/>
+
+    <origin xyz="-0.08 0 0"/>
+
+    <axis xyz="1 0 0"/>
+
+    <limit
+      lower="-0.8"
+      upper="0.8"
+      effort="50"
+      velocity="1.0"/>
+
+  </joint>
+
+
+  <!-- ================================================= -->
+  <!-- WHEEL MACRO -->
+  <!-- ================================================= -->
+
+  <xacro:macro name="wheel" params="name parent x y">
+
+    <link name="${name}">
+
+      <visual>
+        <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+
+        <geometry>
+          <cylinder
+            radius="${wheel_radius}"
+            length="${wheel_width}"/>
+        </geometry>
+
+        <material name="wheel_material"/>
+      </visual>
+
+      <collision>
+        <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+
+        <geometry>
+          <cylinder
+            radius="${wheel_radius}"
+            length="${wheel_width}"/>
+        </geometry>
+      </collision>
+
+    </link>
+
+    <joint name="${name}_joint" type="continuous">
+
+      <parent link="${parent}"/>
+      <child link="${name}"/>
+
+      <origin xyz="${x} ${y} 0"/>
+
+      <axis xyz="0 1 0"/>
+
+    </joint>
+
+  </xacro:macro>
+
+
+  <!-- ================================================= -->
+  <!-- LEFT WHEELS -->
+  <!-- ================================================= -->
+
+  <!-- Front left -->
+  <xacro:wheel
+    name="front_left_wheel"
+    parent="rocker_left"
+    x="0.21"
+    y="0"/>
+
+  <!-- Middle left -->
+  <xacro:wheel
+    name="middle_left_wheel"
+    parent="bogie_left"
+    x="0.08"
+    y="0"/>
+
+  <!-- Rear left -->
+  <xacro:wheel
+    name="rear_left_wheel"
+    parent="bogie_left"
+    x="-0.15"
+    y="0"/>
+
+
+  <!-- ================================================= -->
+  <!-- RIGHT WHEELS -->
+  <!-- ================================================= -->
+
+  <!-- Front right -->
+  <xacro:wheel
+    name="front_right_wheel"
+    parent="rocker_right"
+    x="0.21"
+    y="0"/>
+
+  <!-- Middle right -->
+  <xacro:wheel
+    name="middle_right_wheel"
+    parent="bogie_right"
+    x="0.08"
+    y="0"/>
+
+  <!-- Rear right -->
+  <xacro:wheel
+    name="rear_right_wheel"
+    parent="bogie_right"
+    x="-0.15"
+    y="0"/>
+
+</robot>

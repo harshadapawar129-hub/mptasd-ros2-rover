@@ -16,7 +16,11 @@ def generate_launch_description():
             ])
         ),
         launch_arguments={
-            'gz_args': '-r empty.sdf'
+            'gz_args': PathJoinSubstitution([
+                FindPackageShare('mptasd_description'),
+                'worlds',
+                'mptasd_lidar_world.sdf'
+            ])
         }.items()
     )
 

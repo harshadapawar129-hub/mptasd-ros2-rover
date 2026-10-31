@@ -1,12 +1,15 @@
 from launch import LaunchDescription
-from launch.actions import IncludeLaunchDescription
+from launch.actions import IncludeLaunchDescription, TimerAction
 from launch.launch_description_sources import PythonLaunchDescriptionSource
-from launch.substitutions import PathJoinSubstitution
+from launch.substitutions import PathJoinSubstitution, Command
+from launch_ros.actions import Node
 from launch_ros.substitutions import FindPackageShare
+from launch_ros.parameter_descriptions import ParameterValue
 
 
 def generate_launch_description():
 
+    # Gazebo world
     gazebo = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
             PathJoinSubstitution([
@@ -24,6 +27,46 @@ def generate_launch_description():
         }.items()
     )
 
+    # Gazebo-specific robot Xacro
+    xacro_file = PathJoinSubstitution([
+        FindPackageShare('mptasd_description'),
+        'urdf',
+        'mptasd_rover_gazebo.xacro'
+    ])
+
+    robot_description = ParameterValue(
+        Command(['xacro ', xacro_file]),
+        value_type=str
+    )
+
+    # Robot State Publisher
+    robot_state_publisher = Node(
+        package='robot_state_publisher',
+        executable='robot_state_publisher',
+        parameters=[
+            {'robot_description': robot_description},
+            {'use_sim_time': True}
+        ],
+        output='screen'
+    )
+
+    # Spawn rover into Gazebo
+    spawn_rover = Node(
+        package='ros_gz_sim',
+        executable='create',
+        arguments=[
+            '-topic', 'robot_description',
+            '-name', 'mptasd_rover',
+            '-z', '0.15'
+        ],
+        output='screen'
+    )
+
     return LaunchDescription([
-        gazebo
+        gazebo,
+        robot_state_publisher,
+        TimerAction(
+            period=5.0,
+            actions=[spawn_rover]
+        )
     ])

@@ -453,6 +453,28 @@
       <state_interface name="position"/>
       <state_interface name="velocity"/>
     </joint>
+
+      <!-- Passive rocker-bogie articulation joints -->
+    <joint name="rocker_left_joint">
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+    </joint>
+
+    <joint name="rocker_right_joint">
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+    </joint>
+
+    <joint name="bogie_left_joint">
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+    </joint>
+
+    <joint name="bogie_right_joint">
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+    </joint>
+
   </ros2_control>
 
 

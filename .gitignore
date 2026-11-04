@@ -1,12 +1,25 @@
+# ROS 2 workspace
 build/
 install/
 log/
 
+# Python
 *.pyc
 __pycache__/
 
+# IDE
 .vscode/
 .idea/
 
+# Temporary files
 *.swp
 *.swo
+*.backup
+
+# Personal development notes
+CONTINUE_HERE.txt
+mptasd_terminal_history.txt
+
+# Generated TF tree files
+/frames_*.pdf
+/frames_*.gv

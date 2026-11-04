@@ -1,75 +1,144 @@
 # MPT-ASD ROS 2 Rover
 
-ROS 2 simulation and development of a six-wheel rocker-bogie rover based on the MPT-ASD project.
+A ROS 2-based simulation and navigation project for a six-wheel mobile robot.
+
+The project focuses on developing a mobile robotic platform capable of traversing uneven terrain, mapping its environment, and performing autonomous navigation. It is part of the broader **MPT-ASD (Mobile Platform for Traversal, Articulation, and Spectral Differentiation)** project.
 
 ## Project Overview
 
-This project focuses on developing a mobile robotic platform using ROS 2. The rover uses a six-wheel rocker-bogie suspension system designed for improved mobility over uneven terrain.
+MPT-ASD is a six-wheel  rover designed for mobile robotics applications.
 
-The ROS 2 version of the project is being developed as a simulation and robotics portfolio project.
+This repository contains the ROS 2 implementation, including the robot model, Gazebo simulation, wheel control, LiDAR integration, environment mapping, and ongoing Nav2 integration.
 
 ## Current Progress
 
-- [x] ROS 2 workspace setup
-- [x] ROS 2 package creation
-- [x] URDF/Xacro rover model
-- [x] Six-wheel rocker-bogie structure
-- [x] Robot State Publisher
-- [x] TF2 visualization
-- [x] RViz visualization
-- [ ] Gazebo physics simulation
-- [ ] Collision and inertial properties
-- [ ] ros2_control
-- [ ] Wheel control
-- [ ] LiDAR
-- [ ] IMU
-- [ ] Camera
-- [ ] SLAM
-- [ ] Nav2 autonomous navigation
-- [ ] 4-DOF robotic arm
-- [ ] MoveIt 2
-- [ ] Color detection
-- [ ] Pick-and-place
+| Component                        | Status      |
+| -------------------------------- | ----------- |
+| ROS 2 workspace and package      | Completed   |
+| URDF/Xacro robot model           | Completed   |
+| Six-wheel rocker-bogie structure | Completed   |
+| RViz visualization and TF2       | Completed   |
+| Gazebo simulation                | Completed   |
+| ros2_control integration         | Completed   |
+| Differential-drive wheel control | Completed   |
+| LiDAR integration                | Completed   |
+| SLAM-based environment mapping   | Completed   |
+| Map saving                       | Completed   |
+| Nav2 integration                 | In progress |
+| Autonomous navigation tuning     | In progress |
 
-## Software
 
-- Ubuntu 22.04
+## Technology Stack
+
+- Ubuntu 24.04 LTS
 - ROS 2 Jazzy
 - Gazebo Harmonic
 - RViz2
-- URDF
-- Xacro
+- URDF and Xacro
 - TF2
 - ros2_control
+- Gazebo Sim ROS 2 Control
+- LiDAR
 - SLAM Toolbox
 - Nav2
-- MoveIt 2
-- OpenCV
+- Python
 
-## Robot
-
-### Configuration
+## Robot Configuration
 
 - Six-wheel rocker-bogie suspension
-- Differential drive concept
-- Six DC gear motors
-- 10 cm wheel diameter
+- Differential-drive control
+- Six-wheel configuration
 - Custom rover chassis
+- Simulated LiDAR sensor
 
-## Current Stage
+### Simulation Parameters
 
-The current model has been successfully visualized in RViz using URDF/Xacro, Robot State Publisher and TF2.
+| Parameter         | Value     |
+| ----------------- | --------- |
+| Wheel radius      | 0.05 m    |
+| Wheel separation  | 0.47 m    |
+| LiDAR samples     | 720       |
+| LiDAR update rate | 10 Hz     |
+| LiDAR range       | 0.12–12 m |
 
-The next stage is to add physics simulation in Gazebo Harmonic.
+These values describe the current simulation and controller configuration.
 
-## Future Work
+## SLAM and Mapping
 
-The final objective is to develop a complete autonomous mobile manipulation platform capable of:
+The rover has been integrated with LiDAR-based environment mapping using SLAM Toolbox.
 
-1. Traversing uneven terrain
-2. Mapping its environment
-3. Autonomous navigation
-4. Object detection and color classification
-5. Robotic arm manipulation
-6. Pick-and-place operations
+A map generated during simulation has been saved in the repository:
+
+- `rover_map.pgm`
+- `rover_map.yaml`
+
+The mapping stage provides the environment map for the ongoing navigation integration.
+
+## Repository Structure
+
+```text
+mptasd-ros2-rover/
+├── README.md
+├── .gitignore
+├── rover_map.pgm
+├── rover_map.yaml
+├── docs/
+│   ├── tf_tree.pdf
+│   └── tf_tree.gv
+└── src/
+    └── mptasd_description/
+        ├── config/
+        ├── launch/
+        ├── urdf/
+        ├── worlds/
+        ├── CMakeLists.txt
+        └── package.xml
+```
+
+## Installation and Setup
+
+### Prerequisites
+
+- Ubuntu 24.04
+- ROS 2 Jazzy
+- Gazebo Harmonic
+- Required ROS 2 packages and simulation dependencies
+
+### Clone the Repository
+
+```bash
+git clone https://github.com/harshadapawar129-hub/mptasd-ros2-rover.git
+cd mptasd-ros2-rover
+```
+
+### Build the Workspace
+
+```bash
+source /opt/ros/jazzy/setup.bash
+colcon build --symlink-install
+source install/setup.bash
+```
+
+### Launch RViz Visualization
+
+```bash
+ros2 launch mptasd_description display.launch.py
+```
+
+### Launch Gazebo Simulation
+
+```bash
+ros2 launch mptasd_description gazebo.launch.py
+```
+
+## Future Development
+
+- Complete Nav2 autonomous navigation and goal execution.
+- Improve localization and navigation performance.
+- Tune obstacle avoidance and costmaps.
+- Integrate additional sensors such as an IMU.
+
+Project Goal
+
+The long-term objective is to develop a mobile manipulation platform that combines mobility, environment perception, autonomous navigation, and robotic arm operations into a single system.
 
